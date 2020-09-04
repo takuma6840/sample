@@ -1,0 +1,10 @@
+= form_with model: @content, local: true do |f|
+  br
+  .form-inline
+    = f.label :datetime
+    = ( f.date_select :datetime, discard_year: true, use_month_numbers: true, class: 'form-control', id: 'content_datetime', date_separator: '月' ) + '日'
+  br
+  .form-group
+    = f.label :content
+    = f.text_field :content, style: "width:500px;",  class: 'form-control', id: 'content_content', value: '訪問'
+  = f.submit '内容作成', class: 'btn btn-primary'

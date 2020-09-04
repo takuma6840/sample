@@ -1,0 +1,29 @@
+h1 #{@user.name}様の詳細
+
+= link_to '内容', contents_url(num:@user.id), class: 'btn btn-primary'
+
+.nav.justify-content-end
+  = link_to '戻る', users_path, class: 'nav-link'
+
+table.table.table-hover
+  tbody
+    tr
+      th= User.human_attribute_name(:id)
+      td= @user.id
+    tr
+      th= User.human_attribute_name(:name)
+      td= @user.name
+    tr
+      th= User.human_attribute_name(:telephonenumber)
+      td= @user.telephonenumber
+    tr
+      th= User.human_attribute_name(:birthday)
+      td= @user.birthday.strftime("%m月 %d日")
+    tr
+      th= User.human_attribute_name(:gender)
+      td= @user.gender
+    tr
+      th= User.human_attribute_name(:address)
+      td= @user.address
+= link_to '編集', edit_user_path,class: 'btn btn-primary mr-3'
+= link_to '削除', @user, method: :delete, data: { confirm: "#{@user.name}を削除します。よろしいですか？"}, class: 'btn btn-danger'

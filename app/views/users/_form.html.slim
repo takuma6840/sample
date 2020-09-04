@@ -1,0 +1,29 @@
+- if user.errors.present?
+  ul#error_explanation
+    - user.errors.full_messages.each do |messeage|
+      li= messeage
+
+
+= form_with model: user, local: true do |f|
+  .form-inline
+    = f.label :name
+    = f.text_field :name, class: 'form-control', id: 'user_name', placeholder: '名前'
+  br
+  .form-inline
+    = f.label :birthday
+    = ( f.date_select :birthday, discard_year: true, use_month_numbers: true, class: 'form-control', id: 'user_birthday', date_separator: '月' ) + '日'
+  br
+  .form-group
+    = f.label :gender ,:男
+    = f.radio_button :gender, '男性'
+    = f.label :gender, :女
+    = f.radio_button :gender, '女性'
+  .form-inline
+    = f.label :address
+    = f.text_field :address, style: "width:500px;",  class: 'form-control', id: 'user_address', value: '雲南市'
+  br
+  .form-inline
+    = f.label :telephonenumber
+    = f.text_field :telephonenumber, class: 'form-control', id: 'user_telephonenumber', value: '0854'
+  br
+  = f.submit nil, class: 'btn btn-primary'

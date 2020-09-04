@@ -1,0 +1,26 @@
+h1 #{@user.name}様の内容一覧
+
+.nav.justify-content-end
+  = link_to '顧客登録・一覧へ', users_path, class: 'nav-link'
+
+= link_to '内容作成', new_content_path, class: 'btn btn-primary'
+
+.mb-3
+table.table.table-hover
+  thead.thead-default
+    tr
+      th= Content.human_attribute_name(:id)
+      th= Content.human_attribute_name(:content)
+      th= Content.human_attribute_name(:datetime)
+      th= Content.human_attribute_name(:reactor)
+      th
+  tbody
+    - @content.each do |content|
+      tr
+        td= content.id
+        td= content.content
+        td= content.datetime.strftime("%Y年 %m月 %d日 %A")
+        td= content.reactor
+        td
+          = link_to '編集', edit_content_path(content),class: 'btn btn-primary mr-3'
+          = link_to '削除', content, method: :delete, data: { confirm: "履歴を削除します。よろしいですか？"}, class: 'btn btn-danger'

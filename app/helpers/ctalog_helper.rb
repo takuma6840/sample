@@ -1,0 +1,2 @@
+module CtalogHelper
+end

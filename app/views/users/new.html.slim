@@ -1,0 +1,7 @@
+h1 新規顧客登録画面
+
+.nav.justify-content-end
+  = link_to '戻る', users_path, class: 'nav-link'
+
+
+= render partial: 'form', locals: { user: @user }

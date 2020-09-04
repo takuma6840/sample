@@ -1,0 +1,6 @@
+h1 #{@user.name}様の内容登録
+
+.nav.justify-content-end
+  = link_to '戻る', contents_path, class: 'nav-link'
+
+= render partial: 'form', locals: { content: @content }
